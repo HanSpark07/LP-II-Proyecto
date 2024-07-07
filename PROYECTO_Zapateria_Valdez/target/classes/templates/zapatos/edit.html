@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Zapatería Valdéz</title>
+
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+  <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div th:include="admin/home_admin.html::header" ></div>
+
+<div class="container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a th:href="@{/zapatos}">Menú</a></li>
+    <li class="breadcrumb-item active">Actualizar Zapato</li>
+  </ol>
+
+  <h2>Actualizar Zapato</h2>
+  <form class="form-horizontal" th:action="@{/zapatos/update}" method="post"  enctype="multipart/form-data">
+    <input type="hidden" name="id" th:value="${zapato.id}">
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="nombre">Nuevo Nombre:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre del zapato" required autocomplete="off" th:value="${zapato.nombre}">
+        <div id="prueba"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="descripcion"> Nueva Descripción:</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese la descripcion del zapato" required autocomplete="off" th:text="${zapato.descripcion}"> </textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="cantidad">Nueva Cantidad:</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Ingrese la cantidad del zapato" th:value="${zapato.cantidad}" required autocomplete="off">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="precio">Nuevo Precio (S/.):</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" step="any"  id="precio" name="precio" placeholder="Ingrese el precio del zapato" th:value="${zapato.precio}" required autocomplete="off">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label  class="control-label col-sm-2" for="img">Nueva Imagen (Opcional):</label>
+      <div class="col-sm-10">
+        <input type="file" class="form-control-file" id="img" name="img">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2" style="margin-left: 20px">
+        <button type="submit" class="btn btn-success"> Guardar</button>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+<br><br>
+<div th:include="admin/home_admin.html::footer" ></div>
+
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>
