@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Zapatería Valdéz</title>
+
+
+  <link th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+  <link th:href="@{css/heroic-features.css}" rel="stylesheet">
+
+</head>
+
+<body>
+<div th:include="admin/home_admin.html::header"></div>
+
+<div class="container">
+  <h1 class="mt-4 mb-3">
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active">CRUD Zapatos</li>
+  </ol>
+
+  <h2>Zapatos</h2>
+  <a class="btn btn-primary" th:href="@{/zapatos/create}" > Agregar Nuevo Zapato</a>
+  <br><br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="zapato:${zapatos}">
+        <td th:text="${zapato.nombre}"></td>
+        <td th:text="${zapato.descripcion}"></td>
+        <td th:text="${zapato.cantidad}"></td>
+        <td th:text="'S/.'+${zapato.precio}"></td>
+        <td><a  class="btn btn-warning" th:href="@{/zapatos/edit/{id} (id=${zapato.id})}">Editar</a> </td>
+        <td><a  class="btn btn-danger" th:href="@{/zapatos/delete/{id} (id=${zapato.id})}">Eliminar</a> </td>
+      </tr>       
+    </tbody>
+  </table><br><br><br><br><br><br>
+
+</div>
+
+<div th:include="admin/home_admin.html::footer"></div>
+
+<script th:src="@{vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>

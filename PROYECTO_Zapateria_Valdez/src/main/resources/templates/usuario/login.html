@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Zapatería Valdéz</title>
+
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+  <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" th:href="@{/}">Zapatería Valdéz</a>
+
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/usuario/registro}">¡Registrate Aquí!</a>
+          </li>
+        </ul>
+      </div>    
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-3" style="white-space: nowrap; margin-left: -230px">
+          <div class="card-body">
+            <h2>Estás a un paso de comprar tus zapatos favoritos...</h2>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <form th:action="@{/usuario/acceso}" method="post">
+      <div class="form-group">
+        <label for="email"> Email:  </label>      
+        <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su email" required autocomplete="off"> 
+
+      </div>
+
+      <div class="form-group">
+        <label for="pwd"> Contraseña:</label>
+        <input type="password"  class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>       
+      </div>
+      <a th:href="@{/usuario/registro}" class="card-link">¿Aún no tiene una cuenta? ¡Regístrese ya!</a><br><br>
+      <div class="form-group">
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-ok"></span> Ingresar</button><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>      
+      </div>    
+    </form>
+
+  </div>
+
+  <div th:include="admin/home_admin.html::footer"></div>
+
+  <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>

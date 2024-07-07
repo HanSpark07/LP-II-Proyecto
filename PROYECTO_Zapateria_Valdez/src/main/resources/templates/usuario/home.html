@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Zapatería Valdéz</title>
+
+  <link th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+  <link th:href="@{css/heroic-features.css}" rel="stylesheet">
+
+</head>
+
+  <body>
+  <div th:include="usuario/home_usuario.html::header" th:if="${sesion==null}">
+  </div>
+  <div th:include="usuario/home_usuario.html::header-usuario" th:unless="${sesion==null}">
+   </div>
+
+  <div class="container">
+
+      <header class="jumbotron my-4">
+        <h1 class="display-3">¡Bienvenido a Zapatería Valdéz Online!</h1>
+        <p class="lead">¡Ordena en línea y paga en tienda!</p>
+      </header>
+
+      <div class="row text-center">
+        <div class="col-lg-3 col-md-6 mb-4" th:each="zapato:${zapatos}">
+          <div class="card h-100">
+            <img class="card-img-top" th:src="@{/images/{img} (img=${zapato.imagen})}" alt="">
+            <div class="card-body">
+              <p class="card-text" th:text="${zapato.nombre}" ></p>
+            </div>
+            <div class="card-footer">
+              <a th:href="@{/zapatohome/{id} (id=${zapato.id})}" class="btn btn-success">Ver producto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+
+  <div th:include="usuario/home_usuario.html::footer">
+  </div>
+
+  <script th:src="@{vendor/jquery/jquery.min.js}"></script>
+  <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+  </html>
